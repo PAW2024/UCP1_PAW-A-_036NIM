@@ -1,0 +1,15 @@
+<!-- views/layouts/nav.ejs -->
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/tickets">View Tickets</a></li>
+        <li><a href="/orders">View Orders</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <% if (user) { %> <!-- Jika user sudah login -->
+            <li><a href="/logout">Logout</a></li>
+        <% } else { %> <!-- Jika user belum login -->
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Sign Up</a></li>
+        <% } %>
+    </ul>
+</nav>

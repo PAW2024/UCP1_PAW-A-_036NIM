@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Pesanan</title>
+</head>
+<body>
+    <h1>Daftar Pesanan Anda</h1>
+    <% if (orders.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tiket</th>
+                    <th>Jumlah Tiket</th>
+                    <th>Total Harga</th>
+                    <th>Tanggal Pembelian</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orders.forEach(order => { %>
+                    <tr>
+                        <td><%= order.nama_tiket %></td>
+                        <td><%= order.jumlah_tiket %></td>
+                        <td>Rp<%= order.total_harga %></td>
+                        <td><%= order.tanggal_pembelian %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>Anda belum memiliki pesanan.</p>
+    <% } %>
+    <a href="/">Kembali ke Beranda</a>
+</body>
+</html>

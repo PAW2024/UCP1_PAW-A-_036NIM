@@ -1,0 +1,35 @@
+<!-- views/ticket.ejs -->
+<%- include('layouts/nav') %>
+
+<h1>Daftar Tiket</h1>
+
+<!-- Menampilkan Daftar Tiket -->
+<table>
+    <thead>
+        <tr>
+            <th>Nama Tiket</th>
+            <th>Harga</th>
+            <th>Stok</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% tickets.forEach(function(ticket) { %>
+            <tr>
+                <td><%= ticket.nama_tiket %></td>
+                <td><%= ticket.harga %></td>
+                <td><%= ticket.stok %></td>
+                <td>
+                    <form action="/orders" method="POST">
+                        <input type="hidden" name="tiket_id" value="<%= ticket.id %>">
+                        <label for="jumlah_tiket_<%= ticket.id %>">Jumlah Tiket:</label>
+                        <input type="number" name="jumlah_tiket" id="jumlah_tiket_<%= ticket.id %>" min="1" max="<%= ticket.stok %>" required>
+                        <button type="submit">Pesan</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+<%- include('layouts/footer') %>
